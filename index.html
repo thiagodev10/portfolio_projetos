@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thiago Adriano · Cientista de Dados</title>
+<meta name="description" content="Portfólio de projetos de Ciência de Dados de Thiago Adriano." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c1120;
+    --bg-soft:#101728;
+    --surface:#141d33;
+    --surface-2:#1a2540;
+    --border:rgba(255,255,255,.08);
+    --border-soft:rgba(255,255,255,.05);
+    --text:#eaf0f7;
+    --text-dim:#9aa7c2;
+    --text-faint:#6b7793;
+    --accent:#37e0c4;
+    --accent-soft:rgba(55,224,196,.12);
+    --accent-2:#ff8a5c;
+    --accent-2-soft:rgba(255,138,92,.12);
+    --display:'Space Grotesk',sans-serif;
+    --body:'Inter',sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,.055) 1px, transparent 0) 0 0/28px 28px,
+      linear-gradient(180deg,var(--bg) 0%,var(--bg-soft) 100%);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.15;margin:0;color:#fff;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:16px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--accent);}
+  section{padding:96px 0;border-bottom:1px solid var(--border-soft);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,36px);}
+  .section-head p{color:var(--text-dim);margin-top:14px;font-size:16px;}
+
+  /* NAV */
+  header.site-nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(12,17,32,.78);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;max-width:1120px;margin:0 auto;
+  }
+  .wordmark{
+    font-family:var(--mono);font-weight:600;font-size:16px;
+    display:flex;align-items:center;gap:8px;letter-spacing:.02em;
+    text-decoration:none;color:#fff;
+  }
+  .wordmark span{color:var(--accent);}
+  nav.links{display:flex;gap:30px;}
+  nav.links a{
+    font-family:var(--mono);font-size:13px;text-decoration:none;
+    color:var(--text-dim);letter-spacing:.02em;
+    transition:color .15s;
+  }
+  nav.links a:hover{color:var(--accent);}
+  .nav-cta{
+    font-family:var(--mono);font-size:13px;padding:9px 16px;
+    border:1px solid var(--accent);border-radius:999px;color:var(--accent);
+    text-decoration:none;white-space:nowrap;transition:.15s;
+  }
+  .nav-cta:hover{background:var(--accent);color:#0c1120;}
+  .menu-toggle{display:none;}
+
+  /* HERO */
+  .hero{padding:110px 0 90px;border-bottom:1px solid var(--border-soft);}
+  .hero h1{font-size:clamp(38px,6vw,64px);letter-spacing:-.01em;}
+  .hero .role{
+    font-family:var(--mono);color:var(--accent-2);font-size:17px;margin-top:14px;
+  }
+  .hero p.lede{
+    max-width:640px;color:var(--text-dim);font-size:17px;margin-top:24px;
+  }
+  .hero-actions{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono);font-size:13.5px;padding:13px 22px;border-radius:8px;
+    text-decoration:none;letter-spacing:.02em;display:inline-flex;align-items:center;gap:8px;
+    transition:.15s;
+  }
+  .btn-primary{background:var(--accent);color:#0c1120;font-weight:600;}
+  .btn-primary:hover{background:#4fe9cf;}
+  .btn-ghost{border:1px solid var(--border);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+  .stat-row{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--border);margin-top:64px;border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--border);
+  }
+  .stat{background:var(--surface);padding:24px 22px;}
+  .stat .num{font-family:var(--display);font-size:28px;color:#fff;font-weight:700;}
+  .stat .label{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-top:6px;text-transform:uppercase;letter-spacing:.05em;}
+
+  /* SOBRE */
+  .sobre-grid{display:grid;grid-template-columns:.9fr 1.1fr 1fr;gap:44px;align-items:start;}
+  .sobre-grid p{color:var(--text-dim);font-size:16px;margin:0 0 16px;}
+  .sobre-grid p strong{color:var(--text);font-weight:600;}
+  .profile-photo{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:10px;
+  }
+  .profile-photo img{
+    width:100%;border-radius:9px;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%;
+    background:#fff;
+  }
+  .profile-photo .cap{
+    font-family:var(--mono);font-size:11.5px;color:var(--text-faint);
+    text-align:center;padding:12px 4px 4px;letter-spacing:.03em;
+  }
+  .formacao-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:26px;
+  }
+  .formacao-card h4{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+  .formacao-item{
+    display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--border-soft);font-size:14.5px;color:var(--text-dim);
+  }
+  .formacao-item:first-of-type{border-top:none;}
+  .formacao-item::before{content:'▹';color:var(--accent-2);flex:none;}
+  .formacao-item b{color:var(--text);font-weight:600;display:block;}
+
+  /* HABILIDADES */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .skill-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;
+  }
+  .skill-card h3{font-size:17px;margin-bottom:6px;}
+  .skill-card .sub{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px;}
+  .tag-group{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+  .tag-group:last-child{margin-bottom:0;}
+  .tag{
+    font-family:var(--mono);font-size:12.5px;padding:6px 12px;border-radius:6px;
+    background:var(--accent-soft);color:var(--accent);border:1px solid rgba(55,224,196,.25);
+  }
+  .tag.alt{background:var(--accent-2-soft);color:var(--accent-2);border-color:rgba(255,138,92,.25);}
+  .tag.muted{background:var(--surface-2);color:var(--text-dim);border-color:var(--border);}
+
+  /* EXPERIENCIA */
+  .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .exp-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:26px;display:flex;flex-direction:column;gap:14px;
+  }
+  .exp-card .badge{
+    font-family:var(--mono);font-size:12px;color:var(--accent);align-self:flex-start;
+    background:var(--accent-soft);padding:5px 10px;border-radius:6px;
+  }
+  .exp-card h3{font-size:16.5px;}
+  .exp-card ul{margin:0;padding-left:18px;color:var(--text-dim);font-size:14.5px;}
+  .exp-card li{margin-bottom:6px;}
+  .exp-card p{color:var(--text-dim);font-size:14.5px;margin:0;}
+
+  /* PROJETOS */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+  .proj-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
+  }
+  .proj-img{height:210px;overflow:hidden;position:relative;}
+  .proj-img img{width:100%;height:100%;object-fit:cover;}
+  .proj-body{padding:26px;display:flex;flex-direction:column;gap:16px;flex:1;}
+  .proj-body h3{font-size:19px;}
+  .proj-body>p.overview{color:var(--text-dim);font-size:14.5px;margin:0;}
+  .proj-block h5{
+    font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--accent-2);margin:0 0 8px;
+  }
+  .proj-block p, .proj-block ul{color:var(--text-dim);font-size:14px;margin:0;padding-left:0;}
+  .proj-block ul{padding-left:16px;}
+  .proj-block li{margin-bottom:6px;}
+  .proj-tech{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:6px;}
+  .proj-tech .tag{font-size:11.5px;padding:5px 10px;}
+
+  /* CONTATO / FOOTER */
+  footer{background:var(--bg-soft);padding:90px 0 40px;}
+  .contact-inner{
+    display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:40px;
+    padding-bottom:56px;border-bottom:1px solid var(--border-soft);
+  }
+  footer h2{font-size:clamp(30px,4vw,44px);max-width:520px;}
+  footer .lede{color:var(--text-dim);margin-top:16px;max-width:460px;font-size:15.5px;}
+  .contact-list{display:flex;flex-direction:column;gap:14px;}
+  .contact-item{
+    display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);
+    font-family:var(--mono);font-size:15px;padding:14px 18px;border:1px solid var(--border);
+    border-radius:10px;background:var(--surface);transition:.15s;min-width:300px;
+  }
+  .contact-item:hover{border-color:var(--accent);color:var(--accent);}
+  .contact-item svg{flex:none;width:18px;height:18px;stroke:currentColor;}
+  .contact-item .k{color:var(--text-faint);font-size:11px;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:2px;}
+  .bottom-bar{
+    display:flex;justify-content:space-between;padding-top:28px;font-family:var(--mono);
+    font-size:12.5px;color:var(--text-faint);flex-wrap:wrap;gap:10px;
+  }
+
+  @media(max-width:860px){
+    nav.links{display:none;}
+    .sobre-grid,.skills-grid,.exp-grid,.proj-grid{grid-template-columns:1fr;}
+    .profile-photo{max-width:280px;}
+    .stat-row{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+    .contact-inner{align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="wordmark">thiago<span>_adriano</span></a>
+    <nav class="links">
+      <a href="#sobre">Sobre</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#projetos">Projetos</a>
+    </nav>
+    <a href="#contato" class="nav-cta">Contato</a>
+  </div>
+</header>
+
+<div id="top" class="wrap hero">
+  <div class="eyebrow">portfólio de ciência de dados</div>
+  <h1>Thiago Adriano</h1>
+  <div class="role">Cientista de Dados · transformando dados em decisões de negócio</div>
+  <p class="lede">Olá, seja muito bem-vindo(a). Nesta página eu demonstro minhas habilidades em resolver problemas de negócio com conceitos e ferramentas de Ciência de Dados, através de projetos construídos com dados públicos — da concepção do desafio até a publicação do modelo em produção.</p>
+  <div class="hero-actions">
+    <a href="#projetos" class="btn btn-primary">Ver projetos →</a>
+    <a href="https://www.linkedin.com/in/thiago-adriano-41619539a/" target="_blank" rel="noopener" class="btn btn-ghost">Conectar no LinkedIn</a>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="num">4+</div>
+      <div class="label">Projetos completos de dados</div>
+    </div>
+    <div class="stat">
+      <div class="num">10+</div>
+      <div class="label">Anos em relacionamento com clientes</div>
+    </div>
+    <div class="stat">
+      <div class="num">2</div>
+      <div class="label">Pós-graduações em andamento/concluídas</div>
+    </div>
+  </div>
+</div>
+
+<section id="sobre">
+  <div class="wrap sobre-grid">
+    <div class="profile-photo">
+      <img src="images/thiago-perfil.jpg" alt="Foto de Thiago Adriano">
+      <div class="cap">Thiago Adriano</div>
+    </div>
+    <div>
+      <div class="eyebrow">sobre mim</div>
+      <p>Meu nome é <strong>Thiago Adriano</strong>, sou formado em Administração e em Análise e Desenvolvimento de Sistemas, pós-graduado em Inteligência e Segurança Cibernética, e atualmente curso outra pós-graduação em Inteligência Artificial e Ciência de Dados.</p>
+      <p>Hoje trabalho de forma autônoma prestando serviços na área de dados, além de desenvolver projetos pessoais de Ciência de Dados para adquirir experiência real na solução de problemas de negócio e no domínio de ferramentas de análise de dados.</p>
+      <p>Estou em busca de uma oportunidade para atuar profissionalmente como <strong>Cientista de Dados</strong>, ajudando empresas a melhorar a tomada de decisão através da construção de soluções orientadas por dados.</p>
+    </div>
+    <div class="formacao-card">
+      <h4>Formação</h4>
+      <div class="formacao-item"><div><b>Administração</b>Graduação</div></div>
+      <div class="formacao-item"><div><b>Análise e Desenvolvimento de Sistemas</b>Graduação</div></div>
+      <div class="formacao-item"><div><b>Inteligência e Segurança Cibernética</b>Pós-graduação</div></div>
+      <div class="formacao-item"><div><b>Inteligência Artificial e Ciência de Dados</b>Pós-graduação em andamento</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">habilidades</div>
+      <h2>Ferramentas e conceitos que utilizo</h2>
+      <p>Da extração e limpeza de dados à modelagem estatística e publicação em produção.</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Linguagens & Banco de Dados</h3>
+        <div class="sub">Programação e persistência de dados</div>
+        <div class="tag-group">
+          <span class="tag">Python</span><span class="tag">Web Scraping</span>
+          <span class="tag">SQL</span><span class="tag">R</span>
+        </div>
+        <div class="tag-group">
+          <span class="tag muted">SQLite</span><span class="tag muted">PostgreSQL</span>
+          <span class="tag muted">MySQL</span><span class="tag muted">Oracle</span>
+          <span class="tag muted">MongoDB</span><span class="tag muted">Cassandra</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Estatística & Machine Learning</h3>
+        <div class="sub">Modelagem e avaliação de performance</div>
+        <div class="tag-group">
+          <span class="tag alt">Regressão</span><span class="tag alt">Classificação</span>
+          <span class="tag alt">Clusterização</span><span class="tag alt">Learn to Rank</span>
+          <span class="tag alt">Balanceamento de dados</span><span class="tag alt">Seleção de atributos</span>
+          <span class="tag alt">Redução de dimensionalidade</span>
+        </div>
+        <div class="tag-group">
+          <span class="tag muted">RMSE</span><span class="tag muted">MAE</span><span class="tag muted">MAPE</span>
+          <span class="tag muted">Confusion Matrix</span><span class="tag muted">Precisão</span>
+          <span class="tag muted">Recall</span><span class="tag muted">Curva ROC</span>
+          <span class="tag muted">Curva Lift</span><span class="tag muted">AUC</span>
+          <span class="tag muted">Silhouette Score</span><span class="tag muted">DB-Index</span>
+        </div>
+        <div class="tag-group">
+          <span class="tag">Scikit-Learn</span><span class="tag">SciPy</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Visualização de Dados</h3>
+        <div class="sub">Storytelling e dashboards</div>
+        <div class="tag-group">
+          <span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
+          <span class="tag">Plotly</span><span class="tag">Bokeh</span>
+          <span class="tag">Power BI</span><span class="tag">Tableau</span>
+          <span class="tag">Metabase</span><span class="tag">Looker</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Engenharia de Software</h3>
+        <div class="sub">Versionamento, deploy e nuvem</div>
+        <div class="tag-group">
+          <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">GitLab</span>
+          <span class="tag">Docker</span><span class="tag">Cookiecutter</span><span class="tag">Virtual Environment</span>
+        </div>
+        <div class="tag-group">
+          <span class="tag alt">Streamlit</span><span class="tag alt">Flask</span><span class="tag alt">APIs em Python</span>
+        </div>
+        <div class="tag-group">
+          <span class="tag muted">Heroku</span><span class="tag muted">AWS</span>
+          <span class="tag muted">Google Cloud Platform</span><span class="tag muted">Microsoft Azure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">experiência</div>
+      <h2>Trajetória profissional</h2>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <span class="badge">Ciência de Dados</span>
+        <h3>4+ Projetos completos de Ciência de Dados</h3>
+        <p>Construção de soluções de dados para problemas de negócio próximos dos desafios reais das empresas, utilizando dados públicos de competições de Ciência de Dados — da concepção do desafio até a publicação do algoritmo treinado em produção, com ferramentas de Cloud Computing.</p>
+      </div>
+      <div class="exp-card">
+        <span class="badge">Vendas · Paraguai</span>
+        <h3>6+ anos como Vendedor no Paraguai</h3>
+        <ul>
+          <li>Vendas de eletrônicos e computadores</li>
+          <li>Atualização de relatórios</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <span class="badge">Vendas · Brindes</span>
+        <h3>4+ anos como Vendedor de Brindes</h3>
+        <ul>
+          <li>Atendimento ao cliente</li>
+          <li>Prospecção de novos clientes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">projetos em ciência de dados</div>
+      <h2>Estudos de caso</h2>
+      <p>Projetos completos, do problema de negócio ao impacto, usando dados públicos.</p>
+    </div>
+
+    <div class="proj-grid">
+
+      <article class="proj-card">
+        <div class="proj-img"><img src="images/projeto-turnover.jpg" alt="Dashboard analítico de RH usado no projeto de turnover"></div>
+        <div class="proj-body">
+          <h3>Análise de Turnover e Retenção em Empresa de Tecnologia</h3>
+          <p class="overview">Estudo analítico focado nos fatores associados à rotatividade de colaboradores em uma empresa de tecnologia, mapeando padrões comportamentais e organizacionais para orientar o RH no redesenho das políticas de retenção.</p>
+          <div class="proj-block">
+            <h5>O problema</h5>
+            <p>A saída contínua de talentos gera altos custos diretos (seleção e onboarding) e indiretos (perda de produtividade). A pergunta central: quais fatores organizacionais precisam mudar para reduzir a perda de colaboradores?</p>
+          </div>
+          <div class="proj-block">
+            <h5>Solução técnica</h5>
+            <ul>
+              <li>Limpeza da base histórica de RH — 1.470 colaboradores e 19 variáveis</li>
+              <li>Análise exploratória univariada (taxa de turnover, distribuições, box-plots)</li>
+              <li>Análise bidimensional entre turnover e fatores como renda, idade, satisfação e equilíbrio vida/trabalho</li>
+            </ul>
+          </div>
+          <div class="proj-block">
+            <h5>Resultados</h5>
+            <ul>
+              <li>Grupos de maior risco de evasão identificados (faixa salarial, tempo de casa, clima e gestão)</li>
+              <li>Insights acionáveis entregues ao RH com propostas de mudança cultural</li>
+              <li>Plano direcionado para redução da rotatividade</li>
+            </ul>
+          </div>
+          <div class="proj-tech">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+            <span class="tag">Seaborn</span><span class="tag">Matplotlib</span><span class="tag alt">People Analytics</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-img"><img src="images/projeto-churn.jpg" alt="Análise de dados de comportamento de compra em laptops"></div>
+        <div class="proj-body">
+          <h3>Redução de Churn e Segmentação de Clientes em App de Delivery</h3>
+          <p class="overview">Identificação de padrões de cancelamento e segmentação de clientes de um app de food delivery, para estruturar um programa de fidelidade que retivesse clientes de alto valor.</p>
+          <div class="proj-block">
+            <h5>O problema</h5>
+            <p>O custo de aquisição de clientes em delivery é elevado. Sem uma estratégia clara de retenção, o churn contínuo impactava diretamente o faturamento — era preciso entender o perfil de compra para agir de forma preditiva.</p>
+          </div>
+          <div class="proj-block">
+            <h5>Solução técnica</h5>
+            <ul>
+              <li>Análise de frequência de pedidos, ticket médio, recência e categorias preferidas</li>
+              <li>Clustering (K-Means) para identificar perfis homogêneos sem rótulos prévios</li>
+              <li>Segmentação dos usuários em faixas de engajamento</li>
+            </ul>
+          </div>
+          <div class="proj-block">
+            <h5>Resultados</h5>
+            <ul>
+              <li>Grupos de risco de churn e grupos VIP claramente identificados</li>
+              <li>Base para campanhas de marketing personalizadas, reduzindo cupons genéricos</li>
+              <li>Aumento potencial de retenção e LTV por perfil de cliente</li>
+            </ul>
+          </div>
+          <div class="proj-tech">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+            <span class="tag">Scikit-learn</span><span class="tag alt">Clusterização (K-Means / RFM)</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-img"><img src="images/projeto-performance.jpg" alt="Ícones 3D de analytics representando people analytics"></div>
+        <div class="proj-body">
+          <h3>Predição de Performance de Colaboradores</h3>
+          <p class="overview">People Analytics e Machine Learning para prever a performance de novos colaboradores 6 meses após a contratação, apoiando o time de Atração de Talentos na redução do turnover.</p>
+          <div class="proj-block">
+            <h5>O problema</h5>
+            <p>Empresas de Contact Center sofrem com alta rotatividade por baixo desempenho. O desafio: identificar, já na seleção, quais perfis têm maior probabilidade de alta performance no futuro.</p>
+          </div>
+          <div class="proj-block">
+            <h5>Solução técnica</h5>
+            <ul>
+              <li>Limpeza e exploração de 7.240 registros de colaboradores</li>
+              <li>Feature importance sobre dados demográficos, histórico profissional e etapas de seleção</li>
+              <li>Modelos supervisionados para classificar o potencial de performance</li>
+            </ul>
+          </div>
+          <div class="proj-block">
+            <h5>Resultados</h5>
+            <ul>
+              <li>Fatores decisivos para uma contratação de sucesso mapeados</li>
+              <li>Nova política de recrutamento orientada a dados</li>
+              <li>Redução potencial de custos com turnover precoce</li>
+            </ul>
+          </div>
+          <div class="proj-tech">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span>
+            <span class="tag alt">People Analytics</span><span class="tag alt">Modelos de Classificação</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-img"><img src="images/projeto-plano-saude.jpg" alt="Código-fonte em análise estatística"></div>
+        <div class="proj-body">
+          <h3>Otimização de Custos de Plano de Saúde</h3>
+          <p class="overview">Modelagem preditiva sobre uma amostra de 1.338 colaboradores de uma grande empresa do ramo alimentício, para identificar os fatores que mais impactam os custos de assistência médica.</p>
+          <div class="proj-block">
+            <h5>O problema</h5>
+            <p>A empresa enfrentava alta contínua nas despesas com plano de saúde. Suspeitava-se de hábitos de vida (tabagismo) e indicadores de saúde (obesidade), mas era preciso mensurar o impacto real de cada fator.</p>
+          </div>
+          <div class="proj-block">
+            <h5>Solução técnica</h5>
+            <ul>
+              <li>EDA de idade, IMC e dependentes via histogramas e box-plots</li>
+              <li>Faixas de IMC segundo os padrões da OMS</li>
+              <li>Matrizes de correlação e R² entre custo médico e hábitos/características</li>
+              <li>Regressão linear múltipla para isolar o efeito de cada variável</li>
+            </ul>
+          </div>
+          <div class="proj-block">
+            <h5>Resultados</h5>
+            <ul>
+              <li>Impacto financeiro de tabagismo e faixas de IMC quantificado</li>
+              <li>Recomendações de programas de prevenção à saúde</li>
+              <li>Modelo capaz de estimar o orçamento de saúde corporativo</li>
+            </ul>
+          </div>
+          <div class="proj-tech">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Statsmodels</span>
+            <span class="tag alt">Regressão Linear Múltipla</span><span class="tag alt">Estatística Inferencial</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer id="contato">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div>
+        <div class="eyebrow">contato</div>
+        <h2>Vamos conversar sobre dados?</h2>
+        <p class="lede">Qualquer sugestão, feedback ou oportunidade, fico à disposição pelos canais ao lado.</p>
+      </div>
+      <div class="contact-list">
+        <a class="contact-item" href="mailto:thiago.dev1@outlook.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <span><span class="k">E-mail</span>thiago.dev1@outlook.com</span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/thiago-adriano-41619539a/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13c0-2.2 1.8-4 4-4s4 1.8 4 4v8"/></svg>
+          <span><span class="k">LinkedIn</span>linkedin.com/in/thiago-adriano-41619539a</span>
+        </a>
+        <!-- TELEFONE: adicione o número aqui -->
+       <a class="contact-item" href="https://wa.me/5545998017588" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+
+    <span>
+        <span class="k">WhatsApp</span>
+        (45) 99801-7588
+    </span>
+</a>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <span>Thiago Adriano — Portfólio de Ciência de Dados</span>
+      <span>Imagens: Unsplash</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
